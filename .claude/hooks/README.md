@@ -100,9 +100,7 @@ Hooks are configured in `.claude/settings.json` using the new format:
     ],
     "PreToolUse": [
       {
-        "matcher": {
-          "tools": ["*"]
-        },
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
@@ -113,9 +111,7 @@ Hooks are configured in `.claude/settings.json` using the new format:
     ],
     "PostToolUse": [
       {
-        "matcher": {
-          "tools": ["*"]
-        },
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
@@ -127,6 +123,12 @@ Hooks are configured in `.claude/settings.json` using the new format:
   }
 }
 ```
+
+**Key points:**
+- `matcher` is a **string**, not an object
+- Use `"*"` to match all tools (or `""` or omit matcher entirely)
+- Use regex patterns like `"Write|Edit"` to match specific tools
+- `SessionStart` doesn't need a matcher (no tool context)
 
 ### Environment Variables
 

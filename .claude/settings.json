@@ -12,9 +12,7 @@
     ],
     "PreToolUse": [
       {
-        "matcher": {
-          "tools": ["*"]
-        },
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
@@ -25,9 +23,7 @@
     ],
     "PostToolUse": [
       {
-        "matcher": {
-          "tools": ["*"]
-        },
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
