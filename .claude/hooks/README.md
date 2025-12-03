@@ -134,17 +134,74 @@ Please use 'pnpm' instead to maintain consistency.
 
 ### 3. post-tool-use.sh
 
-**Purpose:** Optional validation and formatting after file operations
+**Purpose:** Optional auto-formatting and validation after file modifications
 
-**Current features:**
-- Shell script syntax validation (.sh files)
-- Extensible for future formatters (currently commented out)
+**How it works:**
+- Runs automatically after Write, Edit, or NotebookEdit operations
+- Only runs if the tool operation was successful
+- Checks file existence before processing
+- Provides colorful feedback when formatters run
+- Fails gracefully if formatter not installed
 
-**Potential extensions (commented out):**
-- Markdown linting
-- YAML validation
-- JavaScript/TypeScript formatting (prettier, eslint)
-- Python formatting (black, isort)
+**Supported Formatters (opt-in):**
+
+**JavaScript/TypeScript:**
+- `ENABLE_ULTRACITE` - Comprehensive formatter (biome + prettier, recommended)
+- `ENABLE_PRETTIER` - Code formatting only
+- `ENABLE_ESLINT` - Linting + auto-fix
+
+**Python:**
+- `ENABLE_BLACK` - Code formatting
+- `ENABLE_RUFF` - Linting + formatting (faster alternative)
+
+**Shell Scripts:**
+- `ENABLE_SHELLCHECK` - Syntax validation (✅ enabled by default)
+- `ENABLE_SHFMT` - Code formatting
+
+**Markdown:**
+- `ENABLE_MARKDOWNLINT` - Markdown linting
+
+**Configuration:**
+Edit the configuration section at the top of `post-tool-use.sh`:
+```bash
+# JavaScript/TypeScript formatters
+ENABLE_ULTRACITE=false          # All-in-one formatter (recommended)
+ENABLE_PRETTIER=false           # Code formatting only
+ENABLE_ESLINT=false             # Linting + auto-fix
+
+# Python formatters
+ENABLE_BLACK=false              # Code formatting
+ENABLE_RUFF=false               # Linting + formatting (faster)
+
+# Shell formatters
+ENABLE_SHELLCHECK=true          # Syntax validation (recommended)
+ENABLE_SHFMT=false              # Code formatting
+
+# Markdown formatters
+ENABLE_MARKDOWNLINT=false       # Markdown linting
+```
+
+**Features:**
+- 📦 Automatic package manager detection (npm, pnpm, yarn, bun)
+- 🎨 Color-coded feedback (cyan = running, green = success, yellow = issues)
+- 🔧 Runs appropriate formatter based on file extension
+- ✅ Only processes JavaScript files in projects with package.json
+- 🚀 Self-contained (no external scripts required)
+- 🛡️ Safe defaults (only shell validation enabled)
+
+**Example output:**
+```
+🔧 Running ultracite...
+   File: component.tsx
+✅ Formatting complete
+```
+
+**File type detection:**
+- `.ts`, `.tsx`, `.js`, `.jsx`, `.json`, `.jsonc`, `.mjs`, `.cjs` - JavaScript/TypeScript
+- `.py` - Python
+- `.sh` - Shell scripts
+- `.md`, `.mdx` - Markdown
+- `.yml`, `.yaml` - YAML (extensible)
 
 ## How Hooks Work
 
