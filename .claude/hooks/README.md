@@ -48,7 +48,7 @@ SessionStart:startup hook succeeded: bugfix/issue-123 | 3 uncommitted
 
 ### 2. pre-tool-use.sh
 
-**Purpose:** Enforce branch protection rules before file operations
+**Purpose:** Enforce branch protection rules and package manager consistency
 
 **Protected branches:**
 - main
@@ -57,34 +57,79 @@ SessionStart:startup hook succeeded: bugfix/issue-123 | 3 uncommitted
 - production
 - staging
 
-**Rules:**
+**Rules on protected branches:**
 
-✅ **Allowed on all branches:**
-- Read operations (Read, Glob, Grep)
-- Task management (Task, TodoWrite)
-- User questions (AskUserQuestion)
-- Read-only git commands (git status, git diff, git log)
-- Modifications to `.claude-workspace/` directory
+✅ **Allowed:**
+- Read operations (Read, Glob, Grep, WebFetch, WebSearch)
+- Task management (Task, TodoWrite, AskUserQuestion)
+- Read-only git commands (git status, diff, log, show, branch, rev-parse, remote, ls-files)
+- Branch switching (git checkout, git switch)
+- Getting updates (git pull, git fetch, git stash)
+- Modifications to `.claude/` and `.claude-workspace/` directories
+- All other bash commands (build, test, file operations, etc.)
 
-❌ **Blocked on protected branches:**
-- File modifications (Write, Edit, NotebookEdit) outside `.claude-workspace/`
-- Git state changes (commit, push, merge, rebase, etc.)
-- Package installations (npm install, pip install, etc.)
+❌ **Blocked:**
+- File modifications (Write, Edit, NotebookEdit) outside `.claude/` directories
+- Git state changes (commit, push, merge, rebase, cherry-pick, reset, tag)
+- Package installations:
+  - JavaScript: npm/pnpm/yarn/bun install/add
+  - Python: pip install, uv pip install, uv sync, uv venv
+  - Rust: cargo add
+  - Go: go get
+  - Ruby: bundle install
+  - PHP: composer install
+
+⚠️ **Package Manager Consistency:**
+- Automatically detects project's package manager from lock files
+- Blocks usage of wrong package manager (e.g., using npm when project has pnpm-lock.yaml)
+- Prevents lock file conflicts and ensures team consistency
 
 ⚠️ **Warnings:**
-- Using `cd` instead of `__zoxide_cd` for directory navigation
+- Using `cd` instead of `__zoxide_cd` for directory navigation (Agent OS specific)
 
-**Example error message:**
+**Features:**
+- 📦 Automatic package manager detection (npm, pnpm, yarn, bun)
+- 🎨 Beautiful error messages with box formatting and colors
+- ✅ Smart git operation handling (allows safe operations, blocks dangerous ones)
+- 🔒 Protects against accidental changes to protected branches
+- 🚀 Self-contained (no external scripts required)
+
+**Example error messages:**
+
+**File modification blocked:**
 ```
-ERROR: Cannot modify files on protected branch 'main'
-File: /path/to/file.md
+╔════════════════════════════════════════════════════════════════╗
+║           🚫 BLOCKED: Protected Branch Detected                ║
+╚════════════════════════════════════════════════════════════════╝
 
-To make changes:
-1. Create a feature branch: git checkout -b feature/your-feature-name
-2. Make your changes on the feature branch
-3. Push and create a PR when ready
+📍 Current branch: main (protected)
+🛠️  Attempted tool: Write
+📁 File: test.md
 
-Note: You can still modify files in .claude-workspace/ on any branch
+⚠️  You cannot modify files on protected branches.
+   Please create a feature branch first.
+
+💡 Quick fix:
+
+   1. Ask Claude to create a branch for you, or
+   2. Run: git checkout -b feature/your-feature-name
+
+Then try again!
+```
+
+**Wrong package manager:**
+```
+╔════════════════════════════════════════════════════════════════╗
+║           ⚠️  WRONG PACKAGE MANAGER DETECTED                   ║
+╚════════════════════════════════════════════════════════════════╝
+
+❌ You're trying to use: npm
+✅ This project uses: pnpm
+
+💡 Lock file detected:
+   📄 pnpm-lock.yaml
+
+Please use 'pnpm' instead to maintain consistency.
 ```
 
 ### 3. post-tool-use.sh
