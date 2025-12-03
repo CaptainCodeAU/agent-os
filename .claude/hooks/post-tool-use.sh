@@ -94,8 +94,10 @@ detect_package_manager() {
         echo "yarn"
     elif [ -f "package-lock.json" ]; then
         echo "npm"
+    elif [ -f "package.json" ]; then
+        echo "pnpm"  # Default to pnpm if no lock file
     else
-        echo "npm"  # fallback
+        echo "pnpm"  # fallback
     fi
 }
 

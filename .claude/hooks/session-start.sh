@@ -46,7 +46,7 @@ if [ -f "package.json" ]; then
   elif [ -f "package-lock.json" ]; then
     PKG_MANAGER="npm"
   else
-    PKG_MANAGER="npm"
+    PKG_MANAGER="pnpm"  # Default to pnpm if no lock file
   fi
 elif [ -f "requirements.txt" ] || [ -f "pyproject.toml" ] || [ -f "poetry.lock" ]; then
   if [ -f "poetry.lock" ]; then

@@ -135,6 +135,8 @@ case "$TOOL_NAME" in
             DETECTED_PKG="yarn"
         elif [ -f "package-lock.json" ]; then
             DETECTED_PKG="npm"
+        elif [ -f "package.json" ]; then
+            DETECTED_PKG="pnpm"  # Default to pnpm if no lock file
         fi
 
         # Check for package manager consistency (JavaScript/Node.js)
