@@ -15,7 +15,7 @@ This directory contains Claude Code hooks that enforce the development guideline
 
 **Example output:**
 ```
-SessionStart:startup hook success: Branch: chore/add-claude-code-hooks, Uncommitted files: 1
+SessionStart:startup hook success: Branch: chore/add-claude-code-hooks | Uncommitted files: 1
 ```
 
 ### 2. pre-tool-use.sh

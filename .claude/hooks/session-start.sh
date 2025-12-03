@@ -38,7 +38,7 @@ else
 fi
 
 # Add uncommitted files count
-STATUS_MESSAGE="${STATUS_MESSAGE}, Uncommitted files: ${UNCOMMITTED_COUNT}"
+STATUS_MESSAGE="${STATUS_MESSAGE} | Uncommitted files: ${UNCOMMITTED_COUNT}"
 
 # Output the status message
 echo "$STATUS_MESSAGE"
