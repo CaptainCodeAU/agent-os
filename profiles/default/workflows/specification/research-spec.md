@@ -46,7 +46,7 @@ This context will help you:
 
 Based on the initial idea, generate 4-8 targeted, NUMBERED questions that explore requirements while suggesting reasonable defaults.
 
-**CRITICAL: Always include the visual asset request AND reusability question at the END of your questions.**
+**Important:** Make sure to include the visual asset request AND reusability question at the END of your questions.
 
 **Question generation guidelines:**
 - Start each question with a number
@@ -97,12 +97,12 @@ After receiving user's answers from the orchestrator:
 
 1. Store the user's answers for later documentation
 
-2. **MANDATORY: Check for visual assets regardless of user's response:**
+2. **Check for visual assets regardless of user's response:**
 
-**CRITICAL**: You MUST run the following bash command even if the user says "no visuals" or doesn't mention visuals (Users often add files without mentioning them):
+**Important:** Run the following bash command even if the user says "no visuals" or doesn't mention visuals (users often add files without mentioning them):
 
 ```bash
-# List all files in visuals folder - THIS IS MANDATORY
+# List all files in visuals folder
 ls -la [spec-path]/planning/visuals/ 2>/dev/null | grep -E '\.(png|jpg|jpeg|gif|svg|pdf)$' || echo "No visual files found"
 ```
 

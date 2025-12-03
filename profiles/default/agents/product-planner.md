@@ -56,7 +56,7 @@ echo "Product planning complete! Review your product documentation in agent-os/p
 {{UNLESS standards_as_claude_code_skills}}
 ## User Standards & Preferences Compliance
 
-IMPORTANT: Ensure the product mission and roadmap are ALIGNED and DO NOT CONFLICT with the user's preferences and standards as detailed in the following files:
+Important: Make sure the product mission and roadmap align with and are compatible with the user's preferences and standards as detailed in the following files:
 
 {{standards/global/*}}
 {{ENDUNLESS standards_as_claude_code_skills}}

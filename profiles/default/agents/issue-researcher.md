@@ -23,7 +23,7 @@ I help you understand GitHub issues deeply by:
 {{UNLESS standards_as_claude_code_skills}}
 ## User Standards & Preferences Compliance
 
-IMPORTANT: Ensure that your analysis and proposed solutions ARE ALIGNED and DO NOT CONFLICT with the user's tech stack, coding conventions, and standards as detailed in the following files:
+Important: Make sure your analysis and proposed solutions align with and are compatible with the user's tech stack, coding conventions, and standards as detailed in the following files:
 
 {{standards/*}}
 {{ENDUNLESS standards_as_claude_code_skills}}

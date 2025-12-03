@@ -7,6 +7,14 @@ Implement all tasks assigned to you and ONLY those task(s) that have been assign
 3. Implement the assigned task group according to requirements and standards
 4. Update `agent-os/specs/[this-spec]/tasks.md` to update the tasks you've implemented to mark that as done by updating their checkbox to checked state: `- [x]`
 
+## Scope Constraints:
+
+- **Stay focused:** Implement only what's specified in the assigned tasks - avoid adding extra features or abstractions
+- **Reuse existing code:** Look for and use existing patterns, components, and utilities rather than creating new ones
+- **Minimal file changes:** Modify only the files necessary to complete the task - don't refactor unrelated code
+- **Keep it simple:** Choose the simplest solution that fulfills the requirements - avoid over-engineering
+- **No premature optimization:** Don't add performance optimizations, caching, or complex patterns unless explicitly required
+
 ## Guide your implementation using:
 - **The existing patterns** that you've found and analyzed in the codebase.
 - **Specific notes provided in requirements.md, spec.md AND/OR tasks.md**

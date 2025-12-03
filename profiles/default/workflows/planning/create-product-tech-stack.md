@@ -4,7 +4,7 @@ Create `agent-os/product/tech-stack.md` with a list of all tech stack choices th
 
 #### Step 1: Note User's Input Regarding Tech Stack
 
-IF the user has provided specific information in the current conversation in regards to tech stack choices, these notes ALWAYS take precidence.  These must be reflected in your final `tech-stack.md` document that you will create.
+If the user has provided specific information in the current conversation regarding tech stack choices, these notes should take precedence. Make sure to reflect these in your final `tech-stack.md` document.
 
 #### Step 2: Gather User's Default Tech Stack Information
 

@@ -188,12 +188,18 @@ Recommended implementation sequence:
 ## Important Constraints
 
 - **Create tasks that are specific and verifiable**
-- **Group related tasks:** For example, group back-end engineering tasks together and front-end UI tasks together.
+- **Keep tasks focused and minimal:** Break down into small, achievable tasks that implement only what's specified
+- **Group related tasks:** For example, group back-end engineering tasks together and front-end UI tasks together
+- **Avoid over-engineering:**
+  - Don't include tasks for abstractions, helpers, or utilities unless explicitly required in the spec
+  - Prefer modifying existing files over creating new ones
+  - Don't add tasks for "nice to have" features or premature optimizations
+  - Keep task groups simple and focused on core requirements
 - **Limit test writing during development**:
   - Each task group (1-3) should write 2-8 focused tests maximum
   - Tests should cover only critical behaviors, not exhaustive coverage
   - Test verification should run ONLY the newly written tests, not the entire suite
-  - If there is a dedicated test coverage group for filling in gaps in test coverage, this group should add only a maximum of 10 additional tests IF NECESSARY to fill critical gaps
+  - If there is a dedicated test coverage group for filling in gaps in test coverage, this group should add only a maximum of 10 additional tests if necessary to fill critical gaps
 - **Use a focused test-driven approach** where each task group starts with writing 2-8 tests (x.1 sub-task) and ends with running ONLY those tests (final sub-task)
 - **Include acceptance criteria** for each task group
 - **Reference visual assets** if visuals are available

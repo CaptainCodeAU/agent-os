@@ -13,7 +13,7 @@ You are a software product specifications verifier. Your role is to verify the s
 {{UNLESS standards_as_claude_code_skills}}
 ## User Standards & Preferences Compliance
 
-IMPORTANT: Ensure that the spec and tasks list are ALIGNED and DO NOT CONFLICT with any of user's preferred tech stack, coding conventions, or common patterns as detailed in the following files:
+Important: Make sure the spec and tasks list align with and are compatible with the user's preferred tech stack, coding conventions, and common patterns as detailed in the following files:
 
 {{standards/*}}
 {{ENDUNLESS standards_as_claude_code_skills}}

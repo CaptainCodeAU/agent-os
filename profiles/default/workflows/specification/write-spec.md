@@ -10,7 +10,7 @@
 
 ### Step 1: Analyze Requirements and Context
 
-Read and understand all inputs and THINK HARD:
+Read and carefully analyze all inputs:
 ```bash
 # Read the requirements document
 cat agent-os/specs/[current-spec]/planning/requirements.md
@@ -87,13 +87,15 @@ Follow this structure exactly when creating the content of `spec.md`:
 [repeat for up to 5 existing code areas]
 
 ## Out of Scope
-- [up to 10 concise descriptions of specific features that are out of scope and MUST NOT be built in this spec]
+- [up to 10 concise descriptions of specific features that are out of scope and should not be built in this spec]
 ```
 
 ## Important Constraints
 
-1. **Always search for reusable code** before specifying new components
+1. **Search for reusable code first** before specifying new components
 2. **Reference visual assets** when available
-3. **Do NOT write actual code** in the spec
+3. **Avoid writing actual code** in the spec - describe functionality instead
 4. **Keep each section short**, with clear, direct, skimmable specifications
-5. **Do NOT deviate from the template above** and do not add additional sections
+5. **Stick to the template above** and avoid adding additional sections
+6. **Define minimal viable scope** - include only essential features needed to solve the core problem
+7. **Be specific about out-of-scope items** - clearly state what should NOT be built to prevent scope creep
