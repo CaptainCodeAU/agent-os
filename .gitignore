@@ -32,3 +32,6 @@ node_modules/
 # Temporary files
 *.tmp
 *.temp
+
+# Claude workspace - local development docs only
+.claude-workspace/
