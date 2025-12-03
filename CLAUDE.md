@@ -109,6 +109,30 @@ git checkout -b chore/refactor-scripts
 - Edit scripts or config.yml
 - Install packages
 
+### Merging Feature Branches
+
+**Prefer rebase for clean linear history:**
+
+```bash
+# After completing work on feature branch
+git checkout main
+git rebase feature/your-feature
+git push origin main
+
+# Delete feature branch
+git branch -d feature/your-feature
+```
+
+**Why rebase?**
+- Creates linear, clean history
+- Easier to understand chronological changes
+- No merge commits cluttering the log
+- Simpler to cherry-pick or revert changes
+
+**When to use merge:**
+- Syncing with upstream (see below)
+- Long-lived branches with complex history
+
 ---
 
 ## Commit Conventions
