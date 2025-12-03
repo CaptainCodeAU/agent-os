@@ -1,0 +1,7 @@
+{
+  "hooks": {
+    "session-start": ".claude/hooks/session-start.sh",
+    "pre-tool-use": ".claude/hooks/pre-tool-use.sh",
+    "post-tool-use": ".claude/hooks/post-tool-use.sh"
+  }
+}
