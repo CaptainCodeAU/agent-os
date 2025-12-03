@@ -75,16 +75,66 @@ Note: You can still modify files in .claude-workspace/ on any branch
 
 ## How Hooks Work
 
-Claude Code automatically executes these hooks at specific points:
+Claude Code automatically executes these hooks at specific points using the new matcher-based format:
 
 1. **session-start.sh** - Runs when a new Claude Code session begins
 2. **pre-tool-use.sh** - Runs before any tool is executed (Write, Edit, Bash, etc.)
 3. **post-tool-use.sh** - Runs after a tool successfully executes
 
+### Configuration Format
+
+Hooks are configured in `.claude/settings.json` using the new format:
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/session-start.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": {
+          "tools": ["*"]
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/pre-tool-use.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": {
+          "tools": ["*"]
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/post-tool-use.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+### Environment Variables
+
 Hooks receive information via environment variables:
 - `TOOL_NAME` - Name of the tool being used
 - `TOOL_ARGS` - JSON string of tool arguments
 - `TOOL_SUCCESS` - Whether the tool succeeded (post-hook only)
+- `CLAUDE_PROJECT_DIR` - Path to the project directory
 
 ## Development Workflow
 
