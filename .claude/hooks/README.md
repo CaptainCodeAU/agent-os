@@ -9,20 +9,41 @@ This directory contains Claude Code hooks that enforce the development guideline
 **Purpose:** Display session information when Claude Code starts
 
 **What it shows:**
-- Current Git branch
-- Whether the branch is protected (main, master, develop, production, staging)
+- Current Git branch with protection status
 - Number of uncommitted files
+- Package manager detection (npm, pnpm, yarn, bun, pip, poetry, bundler, go, cargo, composer)
+- Git repository validation
 
 **Example output:**
 ```
-SessionStart:startup hook succeeded: chore/add-claude-code-hooks | 1 uncommitted
+╔═══════════════════════════════════════════════════════════╗
+║              🚦 SESSION CHECKPOINT                        ║
+╚═══════════════════════════════════════════════════════════╝
+
+🌿  Branch: feature-branch
+✓   Files: 0 (clean)
+📦  Package Manager: pnpm
+
+────────────────────────────────────────────────────────────
 ```
 
 **Features:**
-- Branch name in green (or yellow for protected branches)
-- `[PROTECTED]` tag in red for protected branches
-- Uncommitted count in blue (0 files) or yellow (>0 files)
-- Concise, colorized output
+- ✨ Beautiful box formatting with Unicode characters
+- 🎨 Color-coded output (cyan box, green/yellow branch, blue/yellow files)
+- 🔒 Protected branch detection with lock emoji and red [PROTECTED] tag
+- 📦 Automatic package manager detection with appropriate emojis
+- ✓ Git repository validation (warns if not in a git repo)
+- 🌿 Branch emoji (🌿 for regular, 🔒 for protected)
+- 📝 File status emoji (✓ for clean, 📝 for uncommitted)
+- 🎯 Works everywhere (not restricted to Claude Code Web)
+
+**Package Managers Detected:**
+- JavaScript: npm 📦, pnpm 📦, yarn 📦, bun 🍞
+- Python: pip 🐍, poetry 🐍
+- Ruby: bundler 💎
+- Go: go 🐹
+- Rust: cargo 🦀
+- PHP: composer 🎵
 
 ### 2. pre-tool-use.sh
 
