@@ -1,6 +1,8 @@
 ## Tech stack
 
-Define your technical stack below. This serves as a reference for all team members and helps maintain consistency across the project.
+**NOTE FOR AGENTS:** This is a template file with placeholder examples. The actual product tech stack is defined in `agent-os/product/tech-stack.md` (created by the `/plan-product` command). Always reference `agent-os/product/tech-stack.md` for implementation guidance.
+
+**For Users:** Define your technical stack below. This serves as a reference for all team members and helps maintain consistency across the project.
 
 ### Framework & Runtime
 - **Application Framework:** [e.g., Rails, Django, Next.js, Express]
