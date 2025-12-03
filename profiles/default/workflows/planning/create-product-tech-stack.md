@@ -15,6 +15,24 @@ Reconcile and fill in the remaining gaps in the tech stack list by finding, read
   - `claude.md`
   - `agents.md`
 
+#### Step 2a: Validate Default Tech Stack Template (Optional Warning)
+
+If the tech stack information from "User Standards & Preferences Compliance" contains placeholder examples like `[e.g., Rails, Django, Next.js]` or similar bracketed placeholders:
+
+**Consider informing the user:**
+```
+Note: Your default tech stack in standards/global/tech-stack.md appears to contain
+placeholder examples. While this is fine, filling it out with your actual default
+preferences can help provide better defaults for future products.
+
+Would you like to continue with product-specific tech stack choices, or would you
+prefer to first update your default tech stack template?
+```
+
+**If user wants to update defaults first:** Pause and let them update `standards/global/tech-stack.md` before continuing.
+
+**If user wants to continue:** Proceed with product-specific tech stack creation using user input and project analysis.
+
 #### Step 3: Create the Tech Stack Document
 
 Create `agent-os/product/tech-stack.md` and populate it with the final list of all technical stack choices, reconciled between the information the user has provided to you and the information found in provided sources.

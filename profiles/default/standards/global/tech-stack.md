@@ -2,7 +2,23 @@
 
 **NOTE FOR AGENTS:** This is a template file with placeholder examples. The actual product tech stack is defined in `agent-os/product/tech-stack.md` (created by the `/plan-product` command). Always reference `agent-os/product/tech-stack.md` for implementation guidance.
 
-**For Users:** Define your technical stack below. This serves as a reference for all team members and helps maintain consistency across the project.
+---
+
+## How This Works
+
+**This File (standards/global/tech-stack.md):**
+- Your **default tech stack** preferences across all projects
+- Used as a foundation when creating product-specific tech stacks via `/plan-product`
+- Injected into agents via `{{standards/*}}` (but agents should prefer product version)
+
+**Product-Specific Tech Stack (agent-os/product/tech-stack.md):**
+- Created by the `/plan-product` command for each specific product
+- Combines your defaults here + product-specific choices + user input
+- The **actual tech stack** that agents use during implementation
+- This is the source of truth for the current product being built
+
+**Instructions for Users:**
+Replace the placeholder examples below with your actual default technology choices. These will serve as defaults when you create new products. Leave as placeholders if you want to specify tech stack on a per-product basis.
 
 ### Framework & Runtime
 - **Application Framework:** [e.g., Rails, Django, Next.js, Express]

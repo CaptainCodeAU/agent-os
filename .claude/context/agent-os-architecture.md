@@ -614,6 +614,84 @@ Acceptance Criteria:
 
 ---
 
+## Standards vs Product Files
+
+Agent OS uses two parallel but distinct systems for documentation:
+
+### standards/ (Profile Templates & Defaults)
+
+**Location:** `profiles/[profile-name]/standards/`
+
+**Purpose:** User's default preferences and templates across all projects
+
+**Characteristics:**
+- Contains **placeholders** and **generic best practices**
+- Example: `standards/global/tech-stack.md` with `[e.g., Rails, Django, Next.js]`
+- Serves as **foundation** for product-specific documentation
+- Injected into agents via `{{standards/*}}` template tag
+- Part of the Agent OS profile (distributed to all projects)
+
+**When to Use:**
+- Setting up default preferences across all your projects
+- Defining coding standards, conventions, error handling patterns
+- Creating reusable templates for teams
+
+**Example Files:**
+- `standards/global/tech-stack.md` - Template with placeholder examples
+- `standards/global/coding-style.md` - Your preferred coding standards
+- `standards/frontend/components.md` - React/Vue component patterns
+- `standards/backend/api.md` - API design conventions
+
+### agent-os/product/ (Actual Product Documentation)
+
+**Location:** `agent-os/product/` (within each project)
+
+**Purpose:** Specific documentation for the current product being built
+
+**Characteristics:**
+- Contains **actual values** and **real choices**
+- Example: `product/tech-stack.md` with "Next.js 14, PostgreSQL 15, Redis 7"
+- Created by `/plan-product` command
+- **Source of truth** for implementation
+- Must be explicitly referenced (no automatic injection)
+- Specific to each project
+
+**When to Use:**
+- Defining the specific product's mission, roadmap, and technical choices
+- During implementation when agents need actual tech stack details
+- When specs and workflows reference product-specific information
+
+**Example Files:**
+- `agent-os/product/mission.md` - This product's mission and goals
+- `agent-os/product/roadmap.md` - Feature roadmap for this product
+- `agent-os/product/tech-stack.md` - ACTUAL tech stack (Next.js 14, not `[e.g., Next.js]`)
+
+### Key Differences
+
+| Aspect | standards/ | agent-os/product/ |
+|--------|-----------|-------------------|
+| **Content** | Templates with placeholders | Actual values |
+| **Scope** | All projects (defaults) | Single product (specific) |
+| **Location** | Profile directory | Project directory |
+| **Created By** | User manually | `/plan-product` command |
+| **Injection** | Via `{{standards/*}}` | Manual reference |
+| **Example** | `[e.g., PostgreSQL, MySQL]` | "PostgreSQL 15" |
+| **Purpose** | Foundation/defaults | Source of truth |
+
+### How They Work Together
+
+**Workflow:**
+1. **User fills** `standards/global/tech-stack.md` with their defaults (or leaves as template)
+2. **User runs** `/plan-product` command
+3. **Agent reads** defaults from `standards/global/tech-stack.md`
+4. **Agent asks** user for product-specific tech stack choices
+5. **Agent creates** `agent-os/product/tech-stack.md` combining defaults + user input
+6. **During implementation**, agents reference `agent-os/product/tech-stack.md` (actual values)
+
+**Important:** When `{{standards/*}}` injects standards, the tech-stack template now includes a note directing agents to use `agent-os/product/tech-stack.md` for implementation guidance.
+
+---
+
 ## Standards Organization
 
 ### Directory Structure
