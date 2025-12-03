@@ -27,20 +27,23 @@ for branch in "${PROTECTED_BRANCHES[@]}"; do
     fi
 done
 
-# Build status message
-STATUS_MESSAGE="SessionStart:startup hook success: "
-
-# Add branch info
+# Build status message with colors
 if [[ "$IS_PROTECTED" == true ]]; then
-    STATUS_MESSAGE="${STATUS_MESSAGE}Branch: ${CURRENT_BRANCH} (PROTECTED)"
+    # Protected branch - use red/yellow for warning
+    BRANCH_INFO="${YELLOW}${CURRENT_BRANCH}${NC} ${RED}[PROTECTED]${NC}"
 else
-    STATUS_MESSAGE="${STATUS_MESSAGE}Branch: ${CURRENT_BRANCH}"
+    # Regular branch - use green
+    BRANCH_INFO="${GREEN}${CURRENT_BRANCH}${NC}"
 fi
 
-# Add uncommitted files count
-STATUS_MESSAGE="${STATUS_MESSAGE} | Uncommitted files: ${UNCOMMITTED_COUNT}"
+# Uncommitted files - use blue if 0, yellow if > 0
+if [[ "$UNCOMMITTED_COUNT" -eq 0 ]]; then
+    FILES_INFO="${BLUE}${UNCOMMITTED_COUNT} uncommitted${NC}"
+else
+    FILES_INFO="${YELLOW}${UNCOMMITTED_COUNT} uncommitted${NC}"
+fi
 
-# Output the status message
-echo "$STATUS_MESSAGE"
+# Output the status message (without prefix - Claude Code adds it automatically)
+echo -e "${BRANCH_INFO} | ${FILES_INFO}"
 
 exit 0

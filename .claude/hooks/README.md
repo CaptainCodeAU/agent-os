@@ -15,8 +15,14 @@ This directory contains Claude Code hooks that enforce the development guideline
 
 **Example output:**
 ```
-SessionStart:startup hook success: Branch: chore/add-claude-code-hooks | Uncommitted files: 1
+SessionStart:startup hook succeeded: chore/add-claude-code-hooks | 1 uncommitted
 ```
+
+**Features:**
+- Branch name in green (or yellow for protected branches)
+- `[PROTECTED]` tag in red for protected branches
+- Uncommitted count in blue (0 files) or yellow (>0 files)
+- Concise, colorized output
 
 ### 2. pre-tool-use.sh
 
