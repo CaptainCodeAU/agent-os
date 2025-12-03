@@ -16,34 +16,35 @@ This directory contains Claude Code hooks that enforce the development guideline
 
 **Example output:**
 ```
-╔═══════════════════════════════════════════════════════════╗
-║              🚦 SESSION CHECKPOINT                        ║
-╚═══════════════════════════════════════════════════════════╝
-
-🌿  Branch: feature-branch
-✓   Files: 0 (clean)
-📦  Package Manager: pnpm
-
-────────────────────────────────────────────────────────────
+SessionStart:startup hook succeeded: main [PROTECTED] | 1 uncommitted | npm
+SessionStart:startup hook succeeded: feature-branch | 0 uncommitted | pnpm
+SessionStart:startup hook succeeded: bugfix/issue-123 | 3 uncommitted
 ```
 
 **Features:**
-- ✨ Beautiful box formatting with Unicode characters
-- 🎨 Color-coded output (cyan box, green/yellow branch, blue/yellow files)
-- 🔒 Protected branch detection with lock emoji and red [PROTECTED] tag
-- 📦 Automatic package manager detection with appropriate emojis
+- 🎨 Color-coded output (green/yellow branch, red [PROTECTED], blue/yellow files, cyan package manager)
+- 🔒 Protected branch detection with red [PROTECTED] tag
+- 📦 Automatic package manager detection
 - ✓ Git repository validation (warns if not in a git repo)
-- 🌿 Branch emoji (🌿 for regular, 🔒 for protected)
-- 📝 File status emoji (✓ for clean, 📝 for uncommitted)
+- 📏 Concise single-line format
 - 🎯 Works everywhere (not restricted to Claude Code Web)
+- 🚀 Self-contained (no external scripts required)
+
+**Colors:**
+- **Green** - Regular branch names
+- **Yellow** - Protected branch names
+- **Red** - [PROTECTED] tag
+- **Blue** - 0 uncommitted files (clean)
+- **Yellow** - >0 uncommitted files
+- **Cyan** - Package manager name
 
 **Package Managers Detected:**
-- JavaScript: npm 📦, pnpm 📦, yarn 📦, bun 🍞
-- Python: pip 🐍, poetry 🐍
-- Ruby: bundler 💎
-- Go: go 🐹
-- Rust: cargo 🦀
-- PHP: composer 🎵
+- JavaScript: npm, pnpm, yarn, bun
+- Python: pip, poetry
+- Ruby: bundler
+- Go: go
+- Rust: cargo
+- PHP: composer
 
 ### 2. pre-tool-use.sh
 
