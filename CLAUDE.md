@@ -279,6 +279,26 @@ Files use template tags that compile during installation:
 
 **For details:** See `.claude/context/agent-modes.md`
 
+### Research Issue (Phase 0 - Optional)
+
+Before planning a fix or feature, you can research GitHub issues systematically with `/research-issue`.
+
+**Purpose:** Systematic GitHub issue analysis
+**Outputs:** `.claude-workspace/research/issues/{ISSUE_NUMBER}-{title}.md`
+**When to use:** Before planning, to deeply understand an issue
+
+**Features:**
+- Fetches issue details from GitHub via `gh` CLI
+- Analyzes codebase for related files and patterns
+- Identifies root causes with confidence levels
+- Proposes multiple solution approaches with tradeoffs
+- Generates comprehensive task analysis documentation
+
+**Next steps after research:**
+- Use `/shape-spec` for significant features
+- Use `/write-spec` if requirements are clear
+- Or proceed directly to implementation if straightforward
+
 ### The 6 Development Phases
 
 1. **plan-product** - Mission, roadmap, tech stack
@@ -407,6 +427,20 @@ standards_as_claude_code_skills: false  # Use Skills vs injection
 ---
 
 ## Quick Reference
+
+### Agent OS Commands
+```bash
+# Research GitHub issue (Phase 0 - Optional)
+/research-issue
+
+# Development phases
+/plan-product      # Phase 1: Product Planning
+/shape-spec        # Phase 2: Requirements Gathering
+/write-spec        # Phase 3: Formal Specification
+/create-tasks      # Phase 4: Task Breakdown
+/implement-tasks   # Phase 5: Implementation
+/orchestrate-tasks # Phase 6: Multi-agent Orchestration
+```
 
 ### Common Commands
 ```bash
