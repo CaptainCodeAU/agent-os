@@ -3,6 +3,21 @@
 Get notified of major releases by subscribing here:
 https://buildermethods.com/agent-os
 
+## [2.1.2] - 2025-12-04
+
+### Added
+- **Issue Research Command** - New `/research-issue` command for systematic GitHub issue analysis
+  - Workflow for fetching and analyzing GitHub issues
+  - Codebase research with pattern identification
+  - Root cause analysis with confidence levels
+  - Multiple solution approaches with tradeoffs
+  - Comprehensive task file generation in `.claude-workspace/research/issues/`
+- **Issue Researcher Agent** - Specialized Claude Code subagent for issue research delegation
+- Support for both single-agent (Cursor/Windsurf) and multi-agent (Claude Code) modes
+
+### Changed
+- Expanded workflow directory with `research/` subdirectory
+
 ## [2.1.1] - 2025-10-29
 
 - Replaced references to 'spec-researcher' (depreciated agent name) with 'spec-shaper'.
@@ -435,6 +450,7 @@ Follow these steps to update a previous version to 1.4.0:
 - Task management with TDD workflow
 - Spec creation and organization system
 
+[2.1.2]: https://github.com/buildermethods/agent-os/compare/v2.1.1...v2.1.2
 [1.4.1]: https://github.com/buildermethods/agent-os/compare/v1.4.0...v1.4.1
 [1.4.2]: https://github.com/buildermethods/agent-os/compare/v1.4.1...v1.4.2
 [1.4.0]: https://github.com/buildermethods/agent-os/compare/v1.3.1...v1.4.0
